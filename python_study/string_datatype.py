@@ -7,7 +7,7 @@ Strings in python are surrounded by either single quotation marks, or double quo
 Square brackets [] can be used to access elements of the string.
 Get the character at position 1 (remember that the first character has the position 0):
 """
-# name ="Sushanta patra"
+# name = "Sushanta patra"
 # print(name[0])
 
 """
@@ -15,7 +15,7 @@ Get the character at position 1 (remember that the first character has the posit
 Since strings are arrays, we can loop through the characters in a string, with a for loop.
 """
 # for x in "banana":
-#   print(x)
+#     print(x)
 
 """
 **** String Length ****
@@ -33,7 +33,7 @@ To check if a certain phrase or character is present in a string, we can use the
 # print("free" in txt)
 
 # if "free" in txt:
-#   print("Yes, 'free' is present.")
+#     print("Yes, 'free' is present.")
 
 """
 **** Check if NOT ****
@@ -52,12 +52,14 @@ You can return a range of characters by using the slice syntax.
 Specify the start index and the end index, separated by a colon, to return a part of the string.
 """
 # b = "Hello, World!"
-# print(b[0:5]) #Hello
-# print(b[:5]) #Hello
-# print(b[2:5]) #llo
+# print(b[0:5])  # Hello        [Left to Right]
+# print(b[0:5:2])  # Hlo        [Left to Right]
+# print(b[:5])  # Hello         [Left to Right]
+# print(b[2:5])  # llo          [Left to Right]
+# print(b[2:-1])  # llo, World
 # print(b[2:]) #llo, World!
-# print(b[-6:-1]) #world
-# print(b[:-1]) #Hello, World!
+# print(b[-6:-1])  # world (right to left)
+# print(b[:-1]) #Hello, World! (right to left)
 
 """
 ===== Python - Modify Strings =======
@@ -72,21 +74,22 @@ The upper() method returns the string in upper case:
 Whitespace is the space before and/or after the actual text, and very often you want to remove this space.
 """
 # a = "Hello, World!"
-# print(a.lower()) 
+# print(a.lower())
+
 
 """
 **** Replace String ****
 The replace() method replaces a string with another string:
 """
 # a = "Hello, World!"
-# print(a.replace("H", "J")) # returns Hello, World!
+# print(a.replace("H", "J"))  # returns Hello, World!
 
 """
 **** Split String ****
 The split() method returns a list where the text between the specified separator becomes the list items.
 """
 # a = "Hello, World!"
-# print(a.split(",")) # returns ['Hello', ' World!']
+# print(a.split(","))  # returns ['Hello', ' World!']
 
 """
 **** String capitalize() Method ****
@@ -94,15 +97,15 @@ The capitalize() method returns a string where the first character is upper case
 """
 # txt = "hello, and welcome to my world."
 # x = txt.capitalize()
-# print (x)
+# print(x)
 
 """
-**** String casefold()() Method ****
+**** String casefold() Method ****
 The casefold() method returns a string where all the characters are lower case.
 """
 # txt = "Hello, And Welcome To My World!"
 # x = txt.casefold()
-# print (x)
+# print(x)
 
 """
 **** String center() Method ****
@@ -110,7 +113,7 @@ The center() method will center align the string, using a specified character (s
 """
 # txt = "Hello this is string"
 # x = txt.center(100)
-# print (x)
+# print(x)
 
 """
 **** String encode() Method ****
@@ -118,20 +121,30 @@ The encode() method encodes the string, using the specified encoding. If no enco
 """
 # txt = "My name is Ståle"
 # x = txt.encode()
-# print (x)
+# print(x)              #b'My name is St\xc3\xa5le'
+# print(x.decode())     #My name is Ståle
 
 """
 **** String endswith() Method ****
 The endswith() method returns True if the string ends with the specified value, otherwise False.
-Syntax => string.endswith(value, start, end)
+Syntax  =>      string.endswith(value, start, end)
 value   =>	    Required. The value to check if the string ends with
 start   =>	    Optional. An Integer specifying at which position to start the search
 end	    =>      Optional. An Integer specifying at which position to end the search
 """
 # txt = "My name is sushanta"
-# x = txt.endswith('sushanta') # return true
-# y = txt.endswith('sushanta',5,10) #return false
-# print (x,y)
+# x = txt.endswith('sushanta')  # return true
+# y = txt.endswith('sushanta', 5, 10)  # return false
+# print(x, y)
+
+# example => check email ends with ['.com','.in','.co.in','.org','.tech']
+# domains = ['.com', '.in', '.co.in', '.org', '.tech']
+# if '.com' in domains:
+#     print('Yes Avaliable')
+# else:
+#     print('Not Avaliable')
+
+
 """
 **** String find() Method ****
 The find() method finds the first occurrence of the specified value.
@@ -144,8 +157,14 @@ start   =>	Optional. Where to start the search. Default is 0
 end     =>	Optional. Where to end the search. Default is to the end of the string
 """
 # txt = "Hello, welcome to my world."
-# x = txt.find("e")
+# x = txt.find("z")  # -1
 # print(x)
+
+# try:
+#     y = txt.index('abc')  # if not found through a error
+#     print(y)
+# except ValueError as e:
+#     print(e)
 
 """
 **** String format() Method ****
@@ -154,16 +173,17 @@ The placeholder is defined using curly brackets: {}. Read more about the placeho
 The format() method returns the formatted string.
 
 Syntax  =>  string.format(value1, value2...)
-value1, value2...	=> Required. One or more values that should be formatted and inserted in the string.
-                    => The values are either a list of values separated by commas, a key=value list, or a combination of both.
-                    => The values can be of any data type.
+=> Required. One or more values that should be formatted and inserted in the string.
+=> The values are either a list of values separated by commas, a key=value list, or a combination of both.
+=> The values can be of any data type.
 """
 # txt = "For only {price:.2f} dollars!"
-# print(txt.format(price = 49))
+# print(txt.format(price=49))
 # txt1 = "My name is {fname}, I'm {age}".format(fname = "John", age = 36)
 # txt2 = "My name is {0}, I'm {1}".format("John",36)
 # txt3 = "My name is {}, I'm {}".format("John",36)
 # print(txt1,txt2,txt3, sep="\n")
+
 
 """
 **** String index() Method ****
@@ -175,64 +195,59 @@ Syntax => string.index(value, start, end)
 # txt = "Hello, welcome to my world."
 # x = txt.index("welcome")
 # y = txt.index("e", 5, 10)
-# print(x,y)
+# print(x, y)
 
 """
 txt = "Company12"
 myTuple = ("John", "Peter", "Vicky")
 
-isalnum()	Returns True if all characters in the string are alphanumeric   =>txt.isalnum()
-isalpha()	Returns True if all characters in the string are in the alphabet    =>txt.isalpha()
-isascii()	Returns True if all characters in the string are ascii characters   =>txt.isascii()
-isdecimal()	Returns True if all characters in the string are decimals       => txt.isdecimal()
-isdigit()	Returns True if all characters in the string are digits         =>txt.isdigit()
-isidentifier()	Returns True if the string is an identifier     =>txt.isidentifier()
-islower()	Returns True if all characters in the string are lower case =>txt.islower()
-isnumeric()	Returns True if all characters in the string are numeric    =>txt.isnumeric()
-isprintable()	Returns True if all characters in the string are printable  =>txt.isprintable()
-isspace()	Returns True if all characters in the string are whitespaces    =>txt.isspace()
-istitle()	Returns True if the string follows the rules of a title =>txt.istitle()
-isupper()	Returns True if all characters in the string are upper case     =>txt.isupper()
-join()	Converts the elements of an iterable into a string      =>x = "#".join(myTuple) //string.join(iterable)
-ljust()	Returns a left justified version of the string  =>txt.ljust(20)
-lower()	Converts a string into lower case   =>txt.lower()
-lstrip()	Returns a left trim version of the string   =>txt.lstrip()
-maketrans()	Returns a translation table to be used in translations
-partition()	Returns a tuple where the string is parted into three parts
-replace()	Returns a string where a specified value is replaced with a specified value =>txt.replace("bananas", "apples")
-rfind()	Searches the string for a specified value and returns the last position of where it was found   =>txt.rfind("casa")
-rindex()	Searches the string for a specified value and returns the last position of where it was found   =>txt.rindex("casa")
-rjust()	Returns a right justified version of the string     =>txt.rjust(20)
+isalnum()	    Returns True if all characters in the string are alphanumeric       =>txt.isalnum()
+isalpha()	    Returns True if all characters in the string are in the alphabet    =>txt.isalpha()
+isascii()	    Returns True if all characters in the string are ascii characters   =>txt.isascii()
+isdecimal()	    Returns True if all characters in the string are decimals           => txt.isdecimal()
+isdigit()	    Returns True if all characters in the string are digits             =>txt.isdigit()
+isidentifier()	Returns True if the string is an identifier                     =>txt.isidentifier()
+islower()	    Returns True if all characters in the string are lower case     =>txt.islower()
+isnumeric()	    Returns True if all characters in the string are numeric        =>txt.isnumeric()
+isprintable()	Returns True if all characters in the string are printable      =>txt.isprintable()
+isspace()	    Returns True if all characters in the string are whitespaces    =>txt.isspace()
+istitle()	    Returns True if the string follows the rules of a title         =>txt.istitle()
+isupper()	    Returns True if all characters in the string are upper case     =>txt.isupper()
+join()	        Converts the elements of an iterable into a string              =>x = "#".join(myTuple) //string.join(iterable)
+ljust()	        Returns a left justified version of the string                  =>txt.ljust(20)
+lower()	        Converts a string into lower case                               =>txt.lower()
+lstrip()	    Returns a left trim version of the string                       =>txt.lstrip()
+maketrans()	    Returns a translation table to be used in translations
+partition()	    Returns a tuple where the string is parted into three parts
+replace()	    Returns a string where a specified value is replaced with a specified value                     =>txt.replace("bananas", "apples")
+rfind()	        Searches the string for a specified value and returns the last position of where it was found   =>txt.rfind("casa")
+rindex()	    Searches the string for a specified value and returns the last position of where it was found   =>txt.rindex("casa")
+rjust()	        Returns a right justified version of the string                     =>txt.rjust(20)
 rpartition()	Returns a tuple where the string is parted into three parts
-rsplit()	Splits the string at the specified separator, and returns a list    =>txt.rsplit(", ")
-rstrip()	Returns a right trim version of the string  =>txt.rstrip()
-split()	Splits the string at the specified separator, and returns a list =>txt.split()
-splitlines()	Splits the string at line breaks and returns a list =>txt.splitlines()
-startswith()	Returns true if the string starts with the specified value  =>txt.startswith("Hello")
-strip()	Returns a trimmed version of the string     =>txt.strip()
-swapcase()	Swaps cases, lower case becomes upper case and vice versa   =>txt.swapcase()
-title()	Converts the first character of each word to upper case =>txt.title()
-translate()	Returns a translated string
-upper()	Converts a string into upper case   =>txt.upper()
-zfill()	Fills the string with a specified number of 0 values at the beginning
+rsplit()	    Splits the string at the specified separator, and returns a list    =>txt.rsplit(", ")
+rstrip()	    Returns a right trim version of the string                          =>txt.rstrip()
+split()	        Splits the string at the specified separator, and returns a list    =>txt.split()
+splitlines()	Splits the string at line breaks and returns a list                 =>txt.splitlines()
+startswith()	Returns true if the string starts with the specified value          =>txt.startswith("Hello")
+strip()	        Returns a trimmed version of the string                             =>txt.strip()
+swapcase()	    Swaps cases, lower case becomes upper case and vice versa           =>txt.swapcase()
+title()	        Converts the first character of each word to upper case             =>txt.title()
+translate()	    Returns a translated string
+upper()	        Converts a string into upper case                                   =>txt.upper()
+zfill()	        Fills the string with a specified number of 0 values at the beginning
 """
 
 
-"""
-**** Escape Characters ****
-\'	=>  Single Quote	
-\\	=>  Backslash	
-\n	=>  New Line	
-\r	=>  Carriage Return	
-\t	=>  Tab	
-\b	=>  Backspace	
-\f	=>  Form Feed	
-\ooo =>	Octal value	
-\xhh    =>	Hex value
-"""
-
-
-
+# **** Escape Characters ****
+# \'	=>  Single Quote
+# \\	=>  Backslash
+# \n	=>  New Line
+# \r	=>  Carriage Return
+# \t	=>  Tab
+# \b	=>  Backspace
+# \f	=>  Form Feed
+# \ooo =>	Octal value
+# \xhh    =>	Hex value
 
 
 """
@@ -341,3 +356,75 @@ print(txt.format(0.25)) #returns You scored 25.000000%
 txt = "You scored {:.0%}"
 print(txt.format(0.25)) # returns You scored 25%
 """
+
+""" ==== String Examples ======="""
+# # String to List and List to String
+# sentence = "This is a sample sentence."
+# sentencer_arr = sentence.split()  # ['This', 'is', 'a', 'sample', 'sentence.']
+# print(sentencer_arr)
+# sentence_join = " ".join(sentencer_arr)  # This is a sample sentence.
+# print(sentence_join)
+
+""" Extracting URLs from a Text: """
+# import re
+# text = "Visit our website at https://www.example.com and our blog at https://blog.example.com for more information."
+# # Use regular expressions to find all URLs in the text
+# urls = re.findall(r'https?://\S+', text)
+# print("URLs found in the text:")
+# for url in urls:
+#     print(url)
+
+""" Title Case Conversion:  """
+# text = "this is a sample sentence for title case conversion."
+# text_title = text.title() #This Is A Sample Sentence For Title Case Conversion.
+# print(text_title)
+
+
+"""Counting Word Occurrences:"""
+# text = "Python is an easy-to-learn programming language, and Python programmers love Python."
+# # Split the text into words and use a dictionary to count word occurrences
+# word_list = text.split()
+# word_count = {}
+
+
+# for word in word_list:
+#     word = word.lower()
+#     if word in word_count:
+#         word_count[word] += 1
+#     else:
+#         word_count[word] = 1
+
+#     # print(word_count)
+
+# print("Word Occurrences:")
+# for word, count in word_count.items():
+#     print(f"{word}: {count}")
+
+"""  Formatting CSV Data: """
+# csv_data = "John,Doe,30\nAlice,Smith,25\nBob,Johnson,35"
+# # Split the CSV data and format it into a tabular format
+# lines = csv_data.split("\n")
+# formatted_data = "First Name\tLast Name\tAge\n"
+
+# for line in lines:
+#     values = line.split(',')
+#     formatted_data += f"{values[0]}\t{values[1]} \t{values[2]} \n"
+
+
+# print(formatted_data)
+
+""" URL Query Parameter Extraction: """
+
+# from urllib.parse import urlparse, parse_qs
+# url = "https://www.example.com/search?q=python&lang=en&page=1"
+
+# # Use urllib.parse to extract query parameters from a URL
+# parsed_url = urlparse(url)
+# query_params = parse_qs(parsed_url.query)
+# print(query_params)
+
+
+# print("Query Parameters:")
+# for key, value in query_params.items():
+#     value_str = "".join(value)
+#     print(f"{key}: {value_str}")

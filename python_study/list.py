@@ -29,9 +29,9 @@ Negative indexing means start from the end
 **** Range of Indexes or Slicing ****
 You can specify a range of indexes by specifying where to start and where to end the range.
 """
-# thislist = ["apple", "banana", "cherry","orange", "kiwi", "melon", "mango"]
-# print(thislist[1]) #returns apple
-# print(thislist[-1]) #return cherry
+# thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+# print(thislist[1])  # returns apple
+# print(thislist[-1])  # return cherry
 # print(thislist[2:5]) #return cherry,orange,kiwi
 # print(thislist[2:]) #This example returns the items from "cherry" to the end:
 # print(thislist[:5]) #This example returns the items from the beginning to, but NOT including, "kiwi":
@@ -49,7 +49,7 @@ To determine if a specified item is present in a list use the in keyword:
 **** Change Item Value ****
 To change the value of a specific item, refer to the index number:
 """
-# thislist = ["apple", "banana", "cherry","orange", "kiwi", "melon", "mango"]
+# thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
 # print(thislist[1])
 # thislist[1] = "blackcurrant"
 # print(thislist)
@@ -58,7 +58,7 @@ To change the value of a specific item, refer to the index number:
 ***** Change a Range of Item Values ****
 To change the value of items within a specific range, define a list with the new values, and refer to the range of index numbers where you want to insert the new values:
 """
-# thislist = ["apple", "banana", "cherry","orange", "kiwi", "melon", "mango"]
+# thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
 # thislist[1:3] = ["blackcurrant", "watermelon"]
 # print(thislist)
 
@@ -85,7 +85,7 @@ To append elements from another list to the current list, use the extend() metho
 """
 # thislist = ["apple", "banana", "cherry"]
 # tropical = ["mango", "pineapple", "papaya"]
-# thislist.extend(tropical) #Add the elements of tropical to thislist:
+# thislist.extend(tropical)  # Add the elements of tropical to thislist:
 # print(thislist)
 
 """
@@ -167,7 +167,7 @@ List comprehension offers a shorter syntax when you want to create a new list ba
 The Syntax
 newlist = [expression for item in iterable if condition == True]
 """
-#Without list comprehension you will have to write a for statement with a conditional test inside:
+# Without list comprehension you will have to write a for statement with a conditional test inside:
 
 # fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
 # newlist = []
@@ -187,7 +187,7 @@ newlist = [expression for item in iterable if condition == True]
 # newlist = [x for x in range(10) if x < 5] #Accept only numbers lower than 5:
 # newlist = [x.upper() for x in fruits] #Set the values in the new list to upper case:
 
-#print(newlist)
+# print(newlist)
 
 """
 **** Sort List Alphanumerically ****
