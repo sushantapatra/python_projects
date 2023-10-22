@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block content %} {% load storecart_templatetags %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 mx-auto">
+			<div class="border rounded p-4 m-4">
+				<h2>Order Details</h2>
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Sl. No.</th>
+
+								<th scope="col">Product</th>
+								<th scope="col">Name</th>
+								<th scope="col">Price</th>
+								<th scope="col">Quntity</th>
+								<th scope="col">Total</th>
+								<th scope="col">Date</th>
+								<th scope="col">Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for order in orders %}
+							<tr class="">
+								<td scope="row">{{forloop.counter}}</td>
+
+								<td>
+									<img src="{{ order.product.image.url}}" alt="{{ order.product.name}}" class="rounded-circle" height="50" width="50" />
+								</td>
+								<td>{{ order.product.name}}</td>
+								<td>{{ order.price|currency }}</td>
+								<td>{{ order.quantity}}</td>
+								<td>{{ order.price|total_price:order.quantity|currency }}</td>
+								<td>{{ order.create_date}}</td>
+								<td>
+									<span class="badge bg-{% if order.status is True %}primary{% else %}warning{% endif %}">
+										{% if order.status is True %} Completed {% else %} Inprogres{% endif %}
+									</span>
+								</td>
+							</tr>
+
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}
