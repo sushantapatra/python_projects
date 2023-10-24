@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import mark_safe
 from django.utils.html import format_html
 
-from .models import Products, Category, Customer, Order
+from .models import Products, Category, Customer, Order, Subcategory
 # Register your models here.
 
 # Model Configuration in admin site
@@ -45,3 +45,4 @@ admin.site.register(Products, AdminProduct)
 admin.site.register(Category, AdminCategory)
 admin.site.register(Customer, AdminCustomer)
 admin.site.register(Order, AdminOrder)
+admin.site.register(Subcategory)
