@@ -1,0 +1,32 @@
+{% extends "courses/base.html" %} 
+{% load custom_courses_template_tags %} 
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<h1>Course List</h1>
+	</div>
+	{% for course in courses %}
+	<div class="col-md-3">
+		<div class="card">
+			<img src="{{ course.thumbnail.url }}" class="card-img-top" alt="..." />
+			<div class="card-body">
+				<h5 class="card-title">{{ course.name }}</h5>
+				<p>Save {{ course.discount }} %</p>
+				<p>
+					<del>{{ course.price|rupee }}</del> &nbsp; {% calculate_selprice_tag course.price course.discount as sell_price%} {{ sell_price|rupee }}
+				</p>
+				<p class="card-text">{{ course.description }}</p>
+			</div>
+			<card class="card-footer p-0">
+				<div class="d-flex justify-content-between">
+					<div>
+						<a href="#" class="btn btn-primary btn-block">Enroll Now</a>
+					</div>
+					<div><a href="/course/{{course.slug}}" class="btn btn-success btn-block">Show More</a></div>
+				</div>
+			</card>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock content %}

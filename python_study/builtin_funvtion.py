@@ -1,5 +1,0 @@
-"""
-Python Builtin Function
-
-dir()
-"""
