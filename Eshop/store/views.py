@@ -9,6 +9,7 @@ from .models import Products
 from .models import Category
 from .models import Customer
 from .models import Order
+from .models import Post
 
 from .middlewares.auth import auth_middleware
 
@@ -97,6 +98,12 @@ def login(request):
 def logout(request):
     request.session.clear()
     return redirect('login')
+
+
+def posts(request):
+    posts =Post.getAllPosts()
+    return render(request, 'posts.html',{'posts':posts})
+
 
 
 """ Class Base View
