@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Templates{% endblock title %}
+{% block pagetitle %}Django Templates File Rendering{% endblock pagetitle %}
+{% block content %}
+
+<div class="row m-4">
+    <di class="col-md-8">
+        <a href="https://docs.djangoproject.com/en/4.2/howto/static-files/" target="__blank"> <h4>Learn More About Django Template Language</h4></a>
+        <br>
+       
+        <h3> Display Variable </h3>
+        <hr>
+        <p>My name is {{ name }} and i am {{ age }} old</p>
+
+        <h3> Filter </h3>
+        <hr>
+        <textarea name="code" class="code" cols="270" rows="60">
+            https://docs.djangoproject.com/en/4.2/ref/templates/
+            When we need to modify variable before displaying we can use filter. Pipe '|' is used to apply filter.
+            Syntax : variable|filter
+            example : {{ name|upper }}
+
+            Some of filters take arguments :
+            Syntax : variable|filter:arguments 
+            example : {{ ' When we need to modify variable before displaying we can use filter'|truncatechars:20 }}
+
+            Some of filters maybe chained  :
+            Syntax : variable|filter:arguments|filter
+            example : {{ ' When we need to modify variable before displaying we can use filter'|upper|truncatechars:20 }}
+            IDate is  {% now "jS F Y H:i" %}
+            
+        </textarea>
+        {% firstof name age email %}
+
+        {% autoescape off %}
+   <p>Hello</p>
+{% endautoescape %}
+    </di>
+</div>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <img src="{% static 'images/img1.jpg' %}" alt="My image">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <img src="{% static 'images/img2.jpeg' %}" alt="My image">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <img src="{% static 'images/img3.jfif' %}" alt="My image">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <img src="{% static 'images/img4.jfif' %}" alt="My image">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function qsa(sel) {
+        return Array.apply(null, document.querySelectorAll(sel));
+    }
+    qsa(".code").forEach(function (editorEl) {
+        CodeMirror.fromTextArea(editorEl, {
+            lineNumbers: true,
+            styleActiveLine: true,
+            matchBrackets: true,
+            theme: 'neat',
+        });
+    });
+</script>
+
+{% endblock content %}
